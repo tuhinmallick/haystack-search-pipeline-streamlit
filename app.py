@@ -20,7 +20,7 @@ try:
 
     set_initial_state()
 
-    st.write('# '+args.name)
+    st.write(f'# {args.name}')
 
     # Search bar
     question = st.text_input("Ask a question", value=st.session_state.question, max_chars=100, on_change=reset_results)
@@ -45,15 +45,15 @@ try:
             except Exception as e:
                 logging.exception(e)
                 st.error("🐞 &nbsp;&nbsp; An error occurred during the request.")
-            
-                
+
+
 
     if st.session_state.results:
         results = st.session_state.results
-        
+
         if args.task == 'extractive':
             answers = results['answers']
-            for count, answer in enumerate(answers):
+            for answer in answers:
                 if answer.answer:
                     text, context = answer.answer, answer.context
                     start_idx = context.find(text)
