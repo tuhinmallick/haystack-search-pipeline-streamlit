@@ -68,5 +68,4 @@ def start_haystack_rag(_document_store: BaseDocumentStore):
 @st.cache_data(show_spinner=True)
 def query(_pipeline, question):
     params = {}
-    results = _pipeline.run(question, params=params)
-    return results
+    return _pipeline.run(question, params=params)
